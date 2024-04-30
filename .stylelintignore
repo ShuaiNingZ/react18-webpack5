@@ -1,0 +1,14 @@
+*.min.css
+
+*.js
+*.ts
+*.tsx
+*.json
+*.jpg
+*.png
+*.eot
+*.ttf
+*.woff
+
+/dist/
+
