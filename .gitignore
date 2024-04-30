@@ -1,3 +1,7 @@
-node_modules/
-dist/
-.idea/
+.husky/*
+.history/*
+.vscode/*
+.idea
+
+dist
+node_modules

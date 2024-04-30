@@ -118,6 +118,13 @@ npm i -D stylelint stylelint-config-standard  stylelint-order stylelint-config-r
 stylelint-config-recess-order stylelint-scss stylelint-config-recommended-scss stylelint-config-standard-scss
 ```
 
+### 安装 git 检测相关
+
+```
+// husky git hook 钩子的控制
+npm i -D husky 
+```
+
 ### 安装项目工具
 
 ```
