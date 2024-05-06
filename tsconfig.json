@@ -3,16 +3,10 @@
         "baseUrl": ".",
         // 配置别名
         "paths": {
-            "@/*": [
-                "src/*"
-            ]
+            "@/*": ["src/*"]
         },
         "target": "ESNext",
-        "lib": [
-            "DOM",
-            "DOM.Iterable",
-            "ESNext"
-        ],
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "allowJs": false,
         "skipLibCheck": false,
         "esModuleInterop": false,
@@ -28,8 +22,5 @@
         "noEmit": true,
         "jsx": "react"
     },
-    "include": [
-        "./src",
-        "./types"
-    ]
+    "include": ["./src", "./types"]
 }

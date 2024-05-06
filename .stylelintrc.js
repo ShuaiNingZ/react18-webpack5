@@ -12,7 +12,7 @@ module.exports = {
         'selector-class-pattern': [
             '^[a-z]+([A-Z][a-z]*)*\\d*$',
             {
-                'message': 'Expected class selector to be lowerCamelCase'
+                message: 'Expected class selector to be lowerCamelCase'
             }
         ]
     }

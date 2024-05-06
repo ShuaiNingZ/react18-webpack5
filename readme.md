@@ -1,7 +1,7 @@
 ### 初始化项目
 
 ```
-npm init -y 
+npm init -y
 生成 package.json, 将 package.json 的 private 设为 true, 私有
 ```
 
@@ -21,7 +21,7 @@ npm i -D cross-env
 ### 安装解析工具
 
 ```
-// webpack 默认只能识别 js 文件, 需要配置 loader 
+// webpack 默认只能识别 js 文件, 需要配置 loader
 // @babel/preset-react 识别 jsx
 // @babel/preset-typescript 将 ts 转为 js
 // babel-loader 将 ES6 转 ES5
@@ -63,7 +63,7 @@ npm i -D mini-css-extract-plugin
 // css-minimizer-webpack-plugin 把 css 代码进行压缩
 npm i -D css-minimizer-webpack-plugin
 
-// terser-webpack-plugin optimization.minimizer 压缩 css 后, js压缩就失效了, 重新把 js 代码进行压缩, 
+// terser-webpack-plugin optimization.minimizer 压缩 css 后, js压缩就失效了, 重新把 js 代码进行压缩,
 npm i -D terser-webpack-plugin
 
 // production js 自带 tree-shaking 将未使用的 js 代码清理
@@ -71,7 +71,7 @@ npm i -D terser-webpack-plugin
 // glob-all 选择要检测哪些文件里面类名和 id 还有标签名
 npm i -D purgecss-webpack-plugin glob-all
 
-// compression-webpack-plugin 打包时生成 gzip 
+// compression-webpack-plugin 打包时生成 gzip
 npm i -D compression-webpack-plugin
 ```
 
@@ -114,7 +114,7 @@ npm i -D prettier eslint-config-prettier eslint-plugin-prettier
 // stylelint-scss scss 检测
 // stylelint-config-recommended-scss stylelint-scss 配置
 // stylelint-config-standard-scss scss 语法规则
-npm i -D stylelint stylelint-config-standard  stylelint-order stylelint-config-rational-order 
+npm i -D stylelint stylelint-config-standard  stylelint-order stylelint-config-rational-order
 stylelint-config-recess-order stylelint-scss stylelint-config-recommended-scss stylelint-config-standard-scss
 ```
 
@@ -122,7 +122,11 @@ stylelint-config-recess-order stylelint-scss stylelint-config-recommended-scss s
 
 ```
 // husky git hook 钩子的控制
-npm i -D husky 
+npm i -D husky
+// commitlint 可以检查我们的信息是否符合规范, 配合 husky 自动进行 commitlint 检查
+npm i -D @commitlint/config-conventional @commitlint/cli
+// git 提交模板
+npm i -D cz-git commitizen
 ```
 
 ### 安装项目工具
