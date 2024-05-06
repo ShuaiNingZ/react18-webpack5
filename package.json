@@ -11,7 +11,7 @@
         "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c ./build/webpack.prod.js",
         "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c ./build/webpack.analy.js",
         "prepare": "husky install",
-        "lint": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
+        "lint": "eslint --fix",
         "prettier": "prettier --write .",
         "commit": "cz"
     },
@@ -44,7 +44,6 @@
         "cross-env": "^7.0.3",
         "css-loader": "^7.1.1",
         "css-minimizer-webpack-plugin": "^6.0.0",
-        "cz-customizable": "^6.9.2",
         "cz-git": "^1.9.1",
         "dotenv-webpack": "^8.1.0",
         "eslint": "^8.57.0",
