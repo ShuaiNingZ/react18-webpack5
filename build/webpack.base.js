@@ -133,10 +133,7 @@ module.exports = {
             systemvars: true
         }),
         new DotenvWebpack({
-            path: path.join(
-                ROOT_PATH,
-                process.env.BASE_ENV ? '/.env.development' : '/.env.production'
-            ),
+            path: path.join(ROOT_PATH, `.env.${process.env.BASE_ENV}`),
             allowEmptyValues: true,
             expand: true,
             systemvars: true

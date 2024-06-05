@@ -85,7 +85,7 @@ module.exports = {
             { allowSingleLine: true }
         ],
         // 使用一致的缩进风格
-        '@typescript-eslint/indent': [2, 4],
+        // '@typescript-eslint/indent': [2, 4],
         // 禁止重新声明变量
         '@typescript-eslint/no-redeclare': 2,
         // 禁止抛出字面量和那些不可能是Error对象的表达式
@@ -95,7 +95,7 @@ module.exports = {
         // 块语句必须总是至少有一个前置空格
         '@typescript-eslint/space-before-blocks': [2, 'always'],
         // 禁止function与左括号之间有空格
-        '@typescript-eslint/space-before-function-paren': [2, 'never'],
+        '@typescript-eslint/space-before-function-paren': [0, 'never'],
         // 操作符周围 一致的空格
         '@typescript-eslint/space-infix-ops': 2,
         // JSX 属性值使用双引号
@@ -215,7 +215,7 @@ module.exports = {
         // 作用域中的变量 分开声明
         'one-var': [2, { initialized: 'never' }],
         // 换行符风格 把换行符放在操作符后面
-        'operator-linebreak': [2, 'after'],
+        // 'operator-linebreak': [2, 'before'],
         // 禁止块语句和类的开始或末尾有空行
         'padded-blocks': [2, 'never'],
         // 强制圆括号内没有空格
@@ -228,8 +228,6 @@ module.exports = {
         'wrap-iife': [2, 'any'],
         // 禁止 “Yoda” 条件
         yoda: [2, 'never'],
-        // const 声明常量
-        // 'prefer-const': 2,
         // production 时，禁用 debugger
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         // 数组方括号 一致的空格

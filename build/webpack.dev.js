@@ -11,6 +11,7 @@ module.exports = merge(baseConfig, {
     devtool: 'eval-cheap-module-source-map',
     devServer: {
         port: 9000,
+        open: true,
         // gzip 压缩, 开发环境不开启, 提升热更新速度
         compress: false,
         // 开启热更新

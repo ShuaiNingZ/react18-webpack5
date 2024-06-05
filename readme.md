@@ -138,3 +138,12 @@ npm i -D @types/react @types/react-dom
 // dotenv-webpack 用于加载环境变量, 识别 .env 开头的文件
 npm i -D dotenv-webpack
 ```
+
+### 前端
+
+## 功能
+
+1. 主题色切换
+2. 语言切换
+3. 媒体查询适配界面
+4. 功能性模块

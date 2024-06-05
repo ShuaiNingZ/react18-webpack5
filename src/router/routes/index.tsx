@@ -1,145 +1,63 @@
-import type { RouteRecord, RouteRecordCase } from '@/router/types';
+import type { RouteRecord } from '@/router/types.ts';
+import { RouteObject, Navigate, Outlet } from 'react-router-dom';
 
-export const BasicLayout = 'BasicLayout';
+import React from 'react';
+import { asyncImportLayout, asyncImportPage } from '@/router/helper.ts';
+import { RouterGuard } from '@/router/guard.tsx';
+import { BasicLayout } from '@/router/routes/routes.ts';
 
-export const menuRoutes = [
-    {
-        path: '/systemConfig',
-        element: 'LAYOUT',
-        meta: {
-            title: '系统设置',
-            icon: 'systemManagement'
-        },
-        children: [
-            {
-                path: 'basicSetting',
-                element: 'PARENT_LAYOUT',
-                meta: {
-                    title: '基础设置',
-                    icon: 'jichushezhi'
-                },
-                children: [
-                    {
-                        path: 'systemArguments',
-                        element: 'SYSTEM_ARGUMENTS',
-                        meta: {
-                            title: '系统参数'
-                        }
-                    },
-                    {
-                        path: 'operationLog',
-                        element: 'OPERATION_LOG',
-                        meta: {
-                            title: '操作日志'
-                        }
-                    },
-                    {
-                        path: 'abnormalTask',
-                        element: 'PARENT_LAYOUT',
-                        meta: {
-                            title: '异常任务'
-                        },
-                        children: [
-                            {
-                                path: 'clearAbnormalTask',
-                                element: 'NETWORK_CONTROL',
-                                meta: {
-                                    title: '清除异常任务'
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                path: 'permissionModule',
-                element: 'PARENT_LAYOUT',
-                meta: {
-                    title: '权限',
-                    icon: 'quanxian'
-                },
-                children: [
-                    {
-                        path: 'userManage',
-                        meta: {
-                            title: '用户管理'
-                        },
-                        children: [
-                            {
-                                path: 'createUser',
-                                element: 'CREATE_USER',
-                                meta: {
-                                    title: '创建用户'
-                                }
-                            },
-                            {
-                                path: 'queryUser',
-                                element: 'QUERY_USER',
-                                meta: {
-                                    title: '查询用户'
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        path: 'roleManage',
-                        name: 'roleManage',
-                        element: 'PARENT_LAYOUT',
-                        meta: {
-                            title: '角色管理'
-                        },
-                        children: [
-                            {
-                                path: 'createRole',
-                                element: 'CREATE_ROLE',
-                                meta: {
-                                    title: '创建角色'
-                                }
-                            },
-                            {
-                                path: 'queryRole',
-                                element: 'QUERY_ROLE',
-                                meta: {
-                                    title: '查询角色'
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+let Layout: React.ComponentType | null = null;
+
+function getLayout() {
+    if (!Layout) {
+        const LayoutComponent = asyncImportLayout();
+        Layout = () => <RouterGuard render={<LayoutComponent />} />;
     }
-] as RouteRecordCase[];
+    return Layout;
+}
 
-export const routes = [
-    {
-        path: '/login',
-        element: 'login',
-        meta: {}
-    },
-    {
-        path: '/',
-        element: 'App',
-        // children: menuRoutes,
-        meta: {
-            title: ''
+export function RoutesRender(routes: RouteRecord[]): RouteObject[] {
+    return routes.map((route) => {
+        const { index, element, redirect } = route;
+        let children = route.children || [];
+        if (children.length) {
+            children = [
+                {
+                    index: true,
+                    redirect: redirect || children[0].fullPath,
+                    path: '',
+                    fullPath: '',
+                    meta: {}
+                },
+                ...children
+            ];
         }
-    },
-    {
-        path: '/404',
-        element: 'error/404',
-        meta: {}
-    },
-    {
-        path: '/401',
-        element: 'error/401',
-        meta: {}
-    }
-] as RouteRecordCase[];
-
-export const ErrorRoute: RouteRecord = {
-    path: '*',
-    redirect: '/404',
-    fullPath: '',
-    meta: {}
-};
+        let ElementComponent: React.ComponentType | null = null;
+        if (index && redirect) {
+            ElementComponent = () => <Navigate to={redirect} replace />;
+        } else if (element) {
+            if (element === BasicLayout) {
+                ElementComponent = getLayout();
+            } else {
+                const PageComponent = asyncImportPage(element);
+                ElementComponent = () => (
+                    <RouterGuard render={<PageComponent />} />
+                );
+            }
+        } else if (redirect) {
+            if (children.length) {
+                ElementComponent = Outlet;
+            } else {
+                ElementComponent = () => <Navigate to={redirect} replace />;
+            }
+        } else {
+            ElementComponent = Outlet;
+        }
+        return {
+            path: route.path || undefined,
+            index: (route.index || undefined) as any,
+            element: ElementComponent ? <ElementComponent /> : undefined,
+            children: children.length ? RoutesRender(children) : undefined
+        };
+    });
+}

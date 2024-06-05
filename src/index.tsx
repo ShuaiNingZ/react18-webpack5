@@ -1,9 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
+
+import store from '@/store';
 import App from './App';
+import '@/assets/styles/index.scss';
+import 'normalize.css/normalize.css';
 
-const root = document.getElementById('root');
-
-if (root) {
-    createRoot(root).render(<App />);
-}
+createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </React.StrictMode>
+);
