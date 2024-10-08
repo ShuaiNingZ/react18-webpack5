@@ -7,6 +7,5 @@ module.exports = {
         'stylelint-config-standard'
     ],
     /* 项目个性化的规则 */
-    rules: {
-    }
+    rules: {}
 };
