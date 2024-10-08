@@ -15,6 +15,8 @@ module.exports = merge(baseConfig, {
     // 生产模式, 会开启 tree-shaking 和 压缩代码, 以及其他优化
     mode: 'production',
     optimization: {
+        // 单独提取 runtime chunk
+        runtimeChunk: 'single',
         minimizer: [
             new CssMinimizerPlugin(),
             // 压缩 js

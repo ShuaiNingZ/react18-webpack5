@@ -8,12 +8,5 @@ module.exports = {
     ],
     /* 项目个性化的规则 */
     rules: {
-        // 命名规范
-        'selector-class-pattern': [
-            '^[a-z]+([A-Z][a-z]*)*\\d*$',
-            {
-                message: 'Expected class selector to be lowerCamelCase'
-            }
-        ]
     }
 };
