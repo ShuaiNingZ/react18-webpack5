@@ -70,12 +70,25 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(scss|sass)$/,
+                test: /\.(less)$/,
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader'
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName:
+                                    '[name]__[local]-[hash:base64:5]'
+                            }
+                        }
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {}
+                        }
+                    }
                 ]
             },
             // 图片资源处理 webpack5 不再使用 file-loader 和 url-loader,  自带 asset-module

@@ -35,8 +35,8 @@ npm i -D @babel/preset-react @babel/preset-typescript babel-loader @babel/core @
 // css-loader 解析 css 文件代码
 // postcss-loader 处理 css 自动加前缀
 // autoprefixer 决定哪些浏览器前缀到 css 中
-// sass-loader 将 sass 编译成 css
-npm i -D style-loader css-loader postcss-loader autoprefixer sass-loader sass
+// less-loader 将 less 编译成 css
+npm i -D style-loader css-loader postcss-loader autoprefixer less-loader less
 
 // @babel/plugin-proposal-decorators 用于解析 React Class 组件代码中的装饰器语法
 npm i -D @babel/plugin-proposal-decorators
@@ -105,17 +105,14 @@ npm i -D eslint-import-resolver-webpack
 // eslint-plugin-prettier 让 ESLint 配置与 Prettier 兼容, 以便在保存文件时自动格式化代码
 npm i -D prettier eslint-config-prettier eslint-plugin-prettier
 
-// css scss 代码格式化工具
+// css less 代码格式化工具
 // stylelint 样式检测主包
 // stylelint-config-standard stylelint 官网推荐包
 // stylelint-order css 声明排序
 // stylelint-config-rational-order stylelint-order 依赖
 // stylelint-config-recess-order stylelint-order 依赖
-// stylelint-scss scss 检测
-// stylelint-config-recommended-scss stylelint-scss 配置
-// stylelint-config-standard-scss scss 语法规则
 npm i -D stylelint stylelint-config-standard  stylelint-order stylelint-config-rational-order
-stylelint-config-recess-order stylelint-scss stylelint-config-recommended-scss stylelint-config-standard-scss
+stylelint-config-recess-order stylelint-config-recommended-less
 ```
 
 ### 安装 git 检测相关

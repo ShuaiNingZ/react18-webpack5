@@ -1,4 +1,5 @@
 *.min.css
+/dist/
 
 *.js
 *.ts
@@ -9,6 +10,4 @@
 *.eot
 *.ttf
 *.woff
-
-/dist/
 

@@ -7,5 +7,5 @@ declare module '*.webp';
 declare module '*.bmp';
 declare module '*.tiff';
 
-declare module '*.scss';
+declare module '*.less';
 declare module '*.svg';

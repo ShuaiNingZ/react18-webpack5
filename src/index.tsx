@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 
 import store from '@/store';
 import App from './App';
-import '@/assets/styles/index.scss';
+import '@/assets/styles/index.less';
 import 'normalize.css/normalize.css';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
